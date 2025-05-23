@@ -1,41 +1,49 @@
-<nav className="navbar">
-  <div className="logo">Abhishek Jha</div>
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-  <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-    <li>
-      <Link to="/" onClick={() => setIsMenuOpen(false)}>
-        Home
-      </Link>
-    </li>
-    <li>
-      <Link to="/about" onClick={() => setIsMenuOpen(false)}>
-        About
-      </Link>
-    </li>
-    <li>
-      <Link to="/projects" onClick={() => setIsMenuOpen(false)}>
-        Projects
-      </Link>
-    </li>
-    <li>
-      <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-        Contact
-      </Link>
-    </li>
-  </ul>
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
-  <div className="nav-controls">
-    <button onClick={toggleTheme} className="theme-toggle">
-      {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-    </button>
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark-mode");
+  };
 
-    <div
-      className={`hamburger ${isMenuOpen ? "open" : ""}`}
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</nav>;
+  return (
+    <nav>
+      <div className="logo">MyPortfolio</div>
+
+      <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/projects">Projects</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+
+      <div className="nav-controls">
+        <button className="theme-toggle" onClick={toggleDarkMode}>
+          {darkMode ? "☀️ Light" : "🌙 Dark"}
+        </button>
+
+        <div
+          className={`hamburger ${isMenuOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  );
+}
