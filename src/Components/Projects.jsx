@@ -31,6 +31,12 @@ const projects = [
     description: "A React.js app to manage and utilize your time wisely",
     link: "https://pomodoro-app-red-theta.vercel.app/",
   },
+  {
+    id: 6,
+    name: "Navigation Page",
+    description: "A React.js app to navigate to other page by Login",
+    link: "https://page-navigation-brown.vercel.app/",
+  },
 ];
 
 const Projects = () => {
